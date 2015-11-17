@@ -69,7 +69,9 @@ class webCrawler(object):
                 break
 
             n += 1
-
+            if n >= self.depth and self.depth > 0:
+                break 
+             
             if url not in followed:
                 try:
                     host = urlparse.urlparse(url)[1]
@@ -93,8 +95,8 @@ class webCrawler(object):
                     print "ERROR: Can't process url '%s' (%s)" % (url, e)
                     print format_exc()
                     
-            if n >= self.depth and self.depth > 0:
-                break         
+            #if n >= self.depth and self.depth > 0:
+            #    break         
 
 class Fetcher(object):
 
